@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RouteWise</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="logo">
+            <h1>RouteWise</h1>
+            <p>Smart Transportation & Logistics Platform</p>
+        </div>
+
+
+    </div>
+
+    <!-- HOME PAGE -->
+    <div class="hero">
+
+        <h2>Welcome to RouteWise</h2>
+
+        <p>
+            Delivering more than goods — connecting people, routes, and trust.
+        </p>
+
+        <div class="buttons">
+
+            <button class="white-btn" onclick="showUserLogin()">
+                Login as User
+            </button>
+
+            <button class="black-btn" onclick="showDriverLogin()">
+                Login as Driver
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- USER LOGIN -->
+
+<div id="userLoginPage" class="hidden card">
+
+    <h1>User Login</h1>
+
+    <input type="text" placeholder="Enter Phone Number">
+
+    <input type="password" placeholder="Enter Password">
+
+    <div class="buttons">
+
+        <button class="white-btn" onclick="showRideSearch()">
+            Login
+        </button>
+
+        <button class="black-btn">
+            Create Account
+        </button>
+
+    </div>
+
+</div>
+
+<!-- DRIVER LOGIN -->
+
+<div id="driverLoginPage" class="hidden card">
+
+    <h1>Driver Login</h1>
+
+    <input type="text" placeholder="Enter Phone Number">
+
+    <input type="password" placeholder="Enter Password">
+
+    <div class="buttons">
+
+        <button class="white-btn" onclick="showDriverDashboard()">
+            Login
+        </button>
+
+        <button class="black-btn">
+            Create Account
+        </button>
+
+    </div>
+
+</div>
+
+<!-- SEARCH RIDE -->
+
+<div id="rideSearchPage" class="hidden card">
+
+    <h1>Search Ride</h1>
+
+    <input type="text" value="Mumbai" readonly>
+
+    <input type="text" value="Nashik" readonly>
+
+    <input type="text" value="Paper Bundles" readonly>
+
+    <select>
+
+        <option>Tempo</option>
+
+        <option>Mini Truck</option>
+
+        <option>Truck</option>
+
+    </select>
+
+    <div class="buttons">
+
+        <button class="white-btn" onclick="showDrivers()">
+            Search Drivers
+        </button>
+
+    </div>
+
+</div>
+
+<!-- DRIVERS -->
+
+<div id="driversPage" class="hidden">
+
+    <h1>Available Drivers</h1>
+
+    <!-- DRIVER 1 -->
+
+    <div class="driver-card">
+
+        <h3>Rajesh</h3>
+
+        <p>Vehicle: Tempo</p>
+
+        <p>Location: Mumbai</p>
+
+        <p>Price: ₹5000</p>
+
+        <p class="status">Available</p>
+
+        <div class="buttons">
+
+            <button class="white-btn" onclick="bookRide('Rajesh',5000)">
+                Book Ride
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- DRIVER 2 -->
+
+    <div class="driver-card">
+
+        <h3>Amit</h3>
+
+        <p>Vehicle: Mini Truck</p>
+
+        <p>Location: Mumbai</p>
+
+        <p>Price: ₹6500</p>
+
+        <p class="status">Available</p>
+
+        <div class="buttons">
+
+            <button class="white-btn" onclick="bookRide('Amit',6500)">
+                Book Ride
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- DRIVER 3 -->
+
+    <div class="driver-card">
+
+        <h3>Suresh</h3>
+
+        <p>Vehicle: Truck</p>
+
+        <p>Location: Mumbai</p>
+
+        <p>Price: ₹8000</p>
+
+        <p class="not-available">Not Available</p>
+
+    </div>
+
+</div>
+
+<!-- DRIVER DASHBOARD -->
+
+<div id="driverDashboard" class="hidden card">
+
+    <h1>Driver Dashboard</h1>
+
+    <h2 style="margin-top:30px;">
+        Ride Request
+    </h2>
+
+    <p style="margin-top:20px;">
+        Pickup: Mumbai
+    </p>
+
+    <p>Drop: Nashik</p>
+
+    <p>Goods: Paper Bundles</p>
+
+    <p>Amount: ₹5000</p>
+
+    <div class="buttons">
+
+        <button class="white-btn" onclick="acceptRide()">
+            Accept Ride
+        </button>
+
+    </div>
+
+</div>
+
+<!-- SUCCESS PAGE -->
+
+<div id="successPage" class="hidden success">
+
+    <h1>Ride Accepted</h1>
+
+    <p>
+        Rajesh has accepted the ride successfully.
+    </p>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
