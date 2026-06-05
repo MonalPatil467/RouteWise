@@ -210,4 +210,17 @@ public class RideServiceImpl implements RideService {
 
         return rideMapper.toDTO(updatedRide);
     }
+
+    private double calculateScore(Driver driver) {
+
+        double score = 0;
+
+        if(driver.getAvailable()) {
+            score += 50;
+        }
+
+        score += (10000 - driver.getPrice()) / 100;
+
+        return score;
+    }
 }

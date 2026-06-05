@@ -10,14 +10,13 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+
 @Mapper(componentModel = "spring")
 public interface DriverMapper {
 
-    RideMapper INSTANCE = Mappers.getMapper(RideMapper.class);
-
     Driver toEntity(DriverSignupDTO dto);
 
-   DriverResponseDTO toDTO(Driver driver);
-
-
+    @Mapping(source = "id", target = "driverId")
+    @Mapping(source = "name", target = "driverName")
+    DriverResponseDTO toDTO(Driver driver);
 }

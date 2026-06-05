@@ -6,5 +6,5 @@ import lombok.Data;
 public class RideResponseDTO {
     private Long rideId;
     private String status;
-    private String driverName;
+   // private String driverName;
 }
