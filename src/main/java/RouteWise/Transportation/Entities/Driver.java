@@ -27,4 +27,8 @@ public class Driver {
     private Double price;
 
     private String currentLocation;
+
+    private Double rating;
+
+    private Integer completedRides;
 }

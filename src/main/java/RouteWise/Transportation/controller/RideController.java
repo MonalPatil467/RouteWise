@@ -1,9 +1,6 @@
 package RouteWise.Transportation.controller;
 
-import RouteWise.Transportation.dtos.BookRideDTO;
-import RouteWise.Transportation.dtos.DriverResponseDTO;
-import RouteWise.Transportation.dtos.RideResponseDTO;
-import RouteWise.Transportation.dtos.SearchRideDTO;
+import RouteWise.Transportation.dtos.*;
 import RouteWise.Transportation.service.RideService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +15,7 @@ public class RideController {
 
     // SEARCH AVAILABLE DRIVERS
     @PostMapping("/search")
-    public List<DriverResponseDTO> searchDrivers(
+    public DriverSearchResponseDTO searchDrivers(
             @RequestBody SearchRideDTO dto
     ) {
 

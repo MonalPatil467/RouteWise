@@ -1,14 +1,11 @@
 package RouteWise.Transportation.service;
 
-import RouteWise.Transportation.dtos.BookRideDTO;
-import RouteWise.Transportation.dtos.DriverResponseDTO;
-import RouteWise.Transportation.dtos.RideResponseDTO;
-import RouteWise.Transportation.dtos.SearchRideDTO;
+import RouteWise.Transportation.dtos.*;
 
 import java.util.List;
 
 public interface RideService {
-    List<DriverResponseDTO> searchDrivers(SearchRideDTO dto);
+    DriverSearchResponseDTO searchDrivers(SearchRideDTO dto);
 
     RideResponseDTO bookRide(BookRideDTO dto);
 

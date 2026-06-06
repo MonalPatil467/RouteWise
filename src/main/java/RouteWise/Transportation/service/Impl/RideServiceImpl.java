@@ -1,14 +1,12 @@
 package RouteWise.Transportation.service.Impl;
 
+import RouteWise.Transportation.AI.AIRecommendationService;
 import RouteWise.Transportation.Entities.Driver;
 import RouteWise.Transportation.Entities.Ride;
 import RouteWise.Transportation.Enums.RideStatus;
 import RouteWise.Transportation.Repositories.DriverRepository;
 import RouteWise.Transportation.Repositories.RideRepository;
-import RouteWise.Transportation.dtos.BookRideDTO;
-import RouteWise.Transportation.dtos.DriverResponseDTO;
-import RouteWise.Transportation.dtos.RideResponseDTO;
-import RouteWise.Transportation.dtos.SearchRideDTO;
+import RouteWise.Transportation.dtos.*;
 import RouteWise.Transportation.mappers.DriverMapper;
 import RouteWise.Transportation.mappers.RideMapper;
 import RouteWise.Transportation.service.RideService;
@@ -29,8 +27,9 @@ public class RideServiceImpl implements RideService {
 
     private final RideMapper rideMapper;
 
+    private final AIRecommendationService aiRecommendationService;
     @Override
-    public List<DriverResponseDTO> searchDrivers(
+    public DriverSearchResponseDTO searchDrivers(
             SearchRideDTO dto
     ) {
 
@@ -42,10 +41,33 @@ public class RideServiceImpl implements RideService {
                                 dto.getPickupLocation()
                         );
 
-        return drivers
-                .stream()
-                .map(driverMapper::toDTO)
-                .toList();
+        StringBuilder driverData = new StringBuilder();
+
+        for (Driver driver : drivers) {
+
+            driverData.append(
+                            "Driver Name: ").append(driver.getName())
+                    .append(", Price: ").append(driver.getPrice())
+                    .append(", Vehicle: ").append(driver.getVehicleType())
+                    .append("\n");
+        }
+
+        String recommendation =
+                aiRecommendationService
+                        .recommendDriver(driverData.toString());
+
+        DriverSearchResponseDTO response =
+                new DriverSearchResponseDTO();
+
+        response.setDrivers(
+                drivers.stream()
+                        .map(driverMapper::toDTO)
+                        .toList()
+        );
+
+        response.setAiRecommendation(recommendation);
+
+        return response;
     }
 
     @Override
