@@ -1,3 +1,4 @@
+
 package RouteWise.Transportation.dtos;
 
 import RouteWise.Transportation.Enums.VehicleType;
@@ -5,7 +6,14 @@ import lombok.Data;
 
 @Data
 public class SearchRideDTO {
-    private String pickupLocation;
-    private String dropLocation;
+
     private VehicleType vehicleType;
+
+    private String pickupLocation;
+
+    private Double pickupLatitude;
+
+    private Double pickupLongitude;
+
+    private Double goodsWeight;
 }

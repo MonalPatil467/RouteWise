@@ -2,33 +2,46 @@ package RouteWise.Transportation.Entities;
 
 import RouteWise.Transportation.Enums.VehicleType;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@Data
-@Table(name="driver")
+@Table(name = "driver")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Driver {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String phone;
-
-    private String password;
 
     @Enumerated(EnumType.STRING)
     private VehicleType vehicleType;
 
-    private Boolean available;
+    // Maximum goods weight this vehicle can carry
+    private Double capacityKg;
 
     private Double price;
-
-    private String currentLocation;
 
     private Double rating;
 
     private Integer completedRides;
+
+    private Boolean available;
+
+    // Keep this for displaying the location name
+    private String currentLocation;
+
+    // Actual GPS coordinates
+    private Double latitude;
+
+    private Double longitude;
 }
+

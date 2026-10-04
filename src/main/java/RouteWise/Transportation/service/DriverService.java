@@ -1,16 +1,33 @@
 package RouteWise.Transportation.service;
 
-import RouteWise.Transportation.dtos.AuthResponseDTO;
+import RouteWise.Transportation.dtos.DriverAvailabilityResponseDTO;
+import RouteWise.Transportation.dtos.DriverProfileDTO;
 import RouteWise.Transportation.dtos.DriverResponseDTO;
-import RouteWise.Transportation.dtos.DriverSignupDTO;
-import RouteWise.Transportation.dtos.LoginRequestDTO;
 
 import java.util.List;
 
 public interface DriverService {
-    AuthResponseDTO signup(DriverSignupDTO dto);
 
-    List<DriverResponseDTO> getAvailableDrivers(String pickUpLocation);
+    // Get available drivers
+    List<DriverResponseDTO> getAvailableDrivers(
+            String pickUpLocation
+    );
 
-    AuthResponseDTO login(LoginRequestDTO dto);
+    // Update driver availability
+    DriverAvailabilityResponseDTO updateAvailability(
+            String phone,
+            Boolean available
+    );
+
+    // Get driver profile
+    DriverProfileDTO getProfile(
+            String phone
+    );
+
+    // Update driver profile
+    DriverProfileDTO updateProfile(
+            String phone,
+            DriverProfileDTO dto
+    );
 }
+

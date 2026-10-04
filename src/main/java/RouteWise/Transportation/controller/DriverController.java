@@ -1,36 +1,46 @@
 package RouteWise.Transportation.controller;
 
-import RouteWise.Transportation.dtos.AuthResponseDTO;
+import RouteWise.Transportation.dtos.DriverAvailabilityRequest;
+import RouteWise.Transportation.dtos.DriverAvailabilityResponseDTO;
 import RouteWise.Transportation.dtos.DriverResponseDTO;
-import RouteWise.Transportation.dtos.DriverSignupDTO;
-import RouteWise.Transportation.dtos.LoginRequestDTO;
 import RouteWise.Transportation.service.DriverService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/driver")
 public class DriverController {
+
     private final DriverService driverService;
 
-    // DRIVER SIGNUP
-    @PostMapping("/signup")
-    public AuthResponseDTO signup(
-            @RequestBody DriverSignupDTO dto
+    @PutMapping("/availability")
+    public DriverAvailabilityResponseDTO updateAvailability(
+            @RequestBody DriverAvailabilityRequest request,
+            Authentication authentication
     ) {
-
-        return driverService.signup(dto);
+        return driverService.updateAvailability(
+                authentication.getName(),
+                request.getAvailable()
+        );
+    }
+    @GetMapping("/profile")
+    public DriverResponseDTO getProfile(
+            Authentication authentication
+    ) {
+        return driverService.getProfile(authentication.getName());
     }
 
-    // DRIVER LOGIN
-    @PostMapping("/login")
-    public AuthResponseDTO login(
-            @RequestBody LoginRequestDTO dto
+    @PutMapping("/profile")
+    public DriverResponseDTO updateProfile(
+            @RequestBody DriverProfileDTO dto,
+            Authentication authentication
     ) {
-
-        return driverService.login(dto);
+        return driverService.updateProfile(
+                authentication.getName(),
+                dto
+        );
     }
 }
+
